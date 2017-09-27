@@ -1,0 +1,152 @@
+* {
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.3em;
+    /*border-width: 1px;*/
+    /*border-color: coral;*/
+    /*border-style: solid;*/
+    color: #543b03;
+    background-color: #f7e9ca;
+}
+
+h1 {
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+article p {
+    line-height: 1.6em;
+}
+
+article ul,
+article ol {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5em 0;
+    list-style-type: square;
+}
+
+article li {
+    margin: 0.3em 2em;
+}
+
+.page-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em 0 2em;
+}
+
+.page-header a {
+    text-decoration: none;
+}
+
+.primary-navigation ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-content main section,
+article {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+article .title {
+    text-align: center;
+}
+
+article .body {
+    margin: 0 10% 4em;
+}
+
+article p {
+    text-indent: 2em;
+    margin-bottom: 2em;
+}
+
+article {
+    flex-basis: auto;
+}
+
+.page-footer {
+    margin-top: auto;
+}
+
+.page-footer p {
+    margin-bottom: 0.2em;
+}
+
+.page-footer a {
+    text-decoration: none;
+}
+
+.page-footer .links {
+    font-size: 0.85em;
+    margin-left: 1em;
+}
+
+.page-footer .footnote {
+    font-size: 0.75em;
+    text-align: center;
+}
+
+/*------- Fonts -------*/
+
+
+/*@font-face {
+    font-family: "My Font";
+    src: url("/fonts/my-font.eot");
+    src: url("/fonts/my-font.eot?#iefix") format("embedded-opentype");
+    src: url("/fonts/my-font.woff") format("woff");
+    src: url("/fonts/my-font.tff") format("truetype");
+}*/
+
+
+
+/*------- Media Queries -------*/
+
+
+/*@media (min-width: 769px) {*/
+
+    /*.non-stick {*/
+        /*min-height: calc(100vh - 143px);*/
+    /*}*/
+
+    /*.wrapper {*/
+        /*width: 80%;*/
+        /*margin: 0 auto;*/
+    /*}*/
+
+    /*!*----- Floats -----*!*/
+    /*.page-header {*/
+        /*width: 30%;*/
+        /*float: left;*/
+    /*}*/
+
+    /*.primary-content  {*/
+        /*width: 70%;*/
+        /*float: right;*/
+    /*}*/
+
+    /*.name {*/
+        /*float: none;*/
+    /*}*/
+
+    /*.primary-navigation {*/
+        /*float: none;*/
+    /*}*/
+
+    /*.primary-navigation li {*/
+        /*float: none;*/
+        /*margin-left: 0;*/
+    /*}*/
+
+/*}*/
