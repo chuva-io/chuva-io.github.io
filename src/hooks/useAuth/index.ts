@@ -1,6 +1,6 @@
-import { LOCAL_STORAGE_KEYS } from "@/constants";
+import { LOCAL_STORAGE_AUTH_TOKEN_KEY } from "@/constants";
 
-const AUTH_TOKEN_KEY = LOCAL_STORAGE_KEYS.AUTH_TOKEN;
+const AUTH_TOKEN_KEY = LOCAL_STORAGE_AUTH_TOKEN_KEY;
 
 const useAuth = () => {
   const isAuthenticated = () => {
