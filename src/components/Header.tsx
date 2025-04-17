@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/react-router'
+import { Link } from "@tanstack/react-router";
 
 export default function Header() {
   return (
@@ -8,6 +8,10 @@ export default function Header() {
           <Link to="/">Home</Link>
         </div>
       </nav>
+      <div className="flex gap-4">
+        <Link to="/signin">Sign In</Link>
+        <Link to="/signup">Sign Up</Link>
+      </div>
     </header>
-  )
+  );
 }
