@@ -15,6 +15,8 @@ import { Route as SignupImport } from './routes/signup'
 import { Route as SigninImport } from './routes/signin'
 import { Route as AuthenticatedImport } from './routes/_authenticated'
 import { Route as IndexImport } from './routes/index'
+import { Route as AuthenticatedPage1Import } from './routes/_authenticated/page-1'
+import { Route as AuthenticatedPage0Import } from './routes/_authenticated/page-0'
 import { Route as AuthenticatedDashboardImport } from './routes/_authenticated/dashboard'
 
 // Create/Update Routes
@@ -40,6 +42,18 @@ const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRoute,
+} as any)
+
+const AuthenticatedPage1Route = AuthenticatedPage1Import.update({
+  id: '/page-1',
+  path: '/page-1',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+
+const AuthenticatedPage0Route = AuthenticatedPage0Import.update({
+  id: '/page-0',
+  path: '/page-0',
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
 
 const AuthenticatedDashboardRoute = AuthenticatedDashboardImport.update({
@@ -87,6 +101,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardImport
       parentRoute: typeof AuthenticatedImport
     }
+    '/_authenticated/page-0': {
+      id: '/_authenticated/page-0'
+      path: '/page-0'
+      fullPath: '/page-0'
+      preLoaderRoute: typeof AuthenticatedPage0Import
+      parentRoute: typeof AuthenticatedImport
+    }
+    '/_authenticated/page-1': {
+      id: '/_authenticated/page-1'
+      path: '/page-1'
+      fullPath: '/page-1'
+      preLoaderRoute: typeof AuthenticatedPage1Import
+      parentRoute: typeof AuthenticatedImport
+    }
   }
 }
 
@@ -94,10 +122,14 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedPage0Route: typeof AuthenticatedPage0Route
+  AuthenticatedPage1Route: typeof AuthenticatedPage1Route
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedPage0Route: AuthenticatedPage0Route,
+  AuthenticatedPage1Route: AuthenticatedPage1Route,
 }
 
 const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
@@ -110,6 +142,8 @@ export interface FileRoutesByFullPath {
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/page-0': typeof AuthenticatedPage0Route
+  '/page-1': typeof AuthenticatedPage1Route
 }
 
 export interface FileRoutesByTo {
@@ -118,6 +152,8 @@ export interface FileRoutesByTo {
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/page-0': typeof AuthenticatedPage0Route
+  '/page-1': typeof AuthenticatedPage1Route
 }
 
 export interface FileRoutesById {
@@ -127,13 +163,22 @@ export interface FileRoutesById {
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/page-0': typeof AuthenticatedPage0Route
+  '/_authenticated/page-1': typeof AuthenticatedPage1Route
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '' | '/signin' | '/signup' | '/dashboard'
+  fullPaths:
+    | '/'
+    | ''
+    | '/signin'
+    | '/signup'
+    | '/dashboard'
+    | '/page-0'
+    | '/page-1'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '' | '/signin' | '/signup' | '/dashboard'
+  to: '/' | '' | '/signin' | '/signup' | '/dashboard' | '/page-0' | '/page-1'
   id:
     | '__root__'
     | '/'
@@ -141,6 +186,8 @@ export interface FileRouteTypes {
     | '/signin'
     | '/signup'
     | '/_authenticated/dashboard'
+    | '/_authenticated/page-0'
+    | '/_authenticated/page-1'
   fileRoutesById: FileRoutesById
 }
 
@@ -180,7 +227,9 @@ export const routeTree = rootRoute
     "/_authenticated": {
       "filePath": "_authenticated.tsx",
       "children": [
-        "/_authenticated/dashboard"
+        "/_authenticated/dashboard",
+        "/_authenticated/page-0",
+        "/_authenticated/page-1"
       ]
     },
     "/signin": {
@@ -191,6 +240,14 @@ export const routeTree = rootRoute
     },
     "/_authenticated/dashboard": {
       "filePath": "_authenticated/dashboard.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/page-0": {
+      "filePath": "_authenticated/page-0.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/page-1": {
+      "filePath": "_authenticated/page-1.tsx",
       "parent": "/_authenticated"
     }
   }
