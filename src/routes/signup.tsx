@@ -1,5 +1,6 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 import Header from "../components/Header";
+import SignUp from "@/pages/SignUp";
 
 export const Route = createFileRoute("/signup")({
   beforeLoad: async ({ context }) => {
@@ -11,11 +12,7 @@ export const Route = createFileRoute("/signup")({
   component: () => (
     <>
       <Header />
-      <RouteComponent />
+      <SignUp />
     </>
   ),
 });
-
-function RouteComponent() {
-  return <div>Hello "/signup"!</div>;
-}
