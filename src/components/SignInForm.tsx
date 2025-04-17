@@ -9,21 +9,24 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useMutation } from "@tanstack/react-query";
+import { useForm } from "@tanstack/react-form";
 import { login } from "@/api";
-import { useState } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
+import { useMutation } from "@tanstack/react-query";
+import { z } from "zod";
+
+const SignInSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
+});
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
 
-  const { mutate, isPending } = useMutation({
+  const mutation = useMutation({
     mutationFn: login,
     onSuccess: () => {
       navigate({ to: "/dashboard" });
@@ -33,10 +36,17 @@ export function LoginForm({
     },
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    mutate({ email, password });
-  };
+  const form = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: ({ value }) => mutation.mutate(value),
+    validators: {
+      onChange: SignInSchema,
+      onMount: SignInSchema,
+    },
+  });
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -48,35 +58,79 @@ export function LoginForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit}>
+          <form
+            noValidate
+            onSubmit={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              form.handleSubmit();
+            }}
+          >
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="c.evora@chuva.io"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
+                <form.Field
+                  name="email"
+                  children={(field) => (
+                    <>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="c.evora@chuva.io"
+                        value={field.state.value}
+                        onBlur={field.handleBlur}
+                        onChange={(e) => field.handleChange(e.target.value)}
+                        required
+                      />
+                      {field.state.meta.isTouched &&
+                        field.state.meta.errors && (
+                          <p className="text-red-500 text-sm">
+                            {field.state.meta.errors &&
+                              field.state.meta.errors[0]?.message}
+                          </p>
+                        )}
+                    </>
+                  )}
                 />
               </div>
               <div className="grid gap-3">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                </div>
-                <Input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
+                <Label htmlFor="password">Password</Label>
+                <form.Field
+                  name="password"
+                  children={(field) => (
+                    <>
+                      <Input
+                        id="password"
+                        type="password"
+                        value={field.state.value}
+                        onBlur={field.handleBlur}
+                        onChange={(e) => field.handleChange(e.target.value)}
+                        required
+                      />
+                      {field.state.meta.isTouched &&
+                        field.state.meta.errors && (
+                          <p className="text-red-500 text-sm">
+                            {field.state.meta.errors &&
+                              field.state.meta.errors[0]?.message}
+                          </p>
+                        )}
+                    </>
+                  )}
                 />
               </div>
               <div className="flex flex-col gap-3">
-                <Button type="submit" className="w-full" disabled={isPending}>
-                  {isPending ? "Logging in..." : "Login"}
-                </Button>
+                <form.Subscribe
+                  selector={(state) => [state.canSubmit]}
+                  children={([canSubmit]) => (
+                    <Button
+                      type="submit"
+                      className="w-full"
+                      disabled={!canSubmit || mutation.isPending}
+                    >
+                      {mutation.isPending ? "Logging in..." : "Login"}
+                    </Button>
+                  )}
+                />
               </div>
             </div>
             <div className="mt-4 text-center text-sm">
