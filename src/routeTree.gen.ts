@@ -11,30 +11,21 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as SignupImport } from './routes/signup'
-import { Route as SigninImport } from './routes/signin'
-import { Route as AuthenticatedImport } from './routes/_authenticated'
+import { Route as Page1Import } from './routes/page-1'
+import { Route as Page0Import } from './routes/page-0'
 import { Route as IndexImport } from './routes/index'
-import { Route as AuthenticatedPage1Import } from './routes/_authenticated/page-1'
-import { Route as AuthenticatedPage0Import } from './routes/_authenticated/page-0'
-import { Route as AuthenticatedDashboardImport } from './routes/_authenticated/dashboard'
 
 // Create/Update Routes
 
-const SignupRoute = SignupImport.update({
-  id: '/signup',
-  path: '/signup',
+const Page1Route = Page1Import.update({
+  id: '/page-1',
+  path: '/page-1',
   getParentRoute: () => rootRoute,
 } as any)
 
-const SigninRoute = SigninImport.update({
-  id: '/signin',
-  path: '/signin',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const AuthenticatedRoute = AuthenticatedImport.update({
-  id: '/_authenticated',
+const Page0Route = Page0Import.update({
+  id: '/page-0',
+  path: '/page-0',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -42,24 +33,6 @@ const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRoute,
-} as any)
-
-const AuthenticatedPage1Route = AuthenticatedPage1Import.update({
-  id: '/page-1',
-  path: '/page-1',
-  getParentRoute: () => AuthenticatedRoute,
-} as any)
-
-const AuthenticatedPage0Route = AuthenticatedPage0Import.update({
-  id: '/page-0',
-  path: '/page-0',
-  getParentRoute: () => AuthenticatedRoute,
-} as any)
-
-const AuthenticatedDashboardRoute = AuthenticatedDashboardImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => AuthenticatedRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -73,136 +46,63 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/_authenticated': {
-      id: '/_authenticated'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof AuthenticatedImport
-      parentRoute: typeof rootRoute
-    }
-    '/signin': {
-      id: '/signin'
-      path: '/signin'
-      fullPath: '/signin'
-      preLoaderRoute: typeof SigninImport
-      parentRoute: typeof rootRoute
-    }
-    '/signup': {
-      id: '/signup'
-      path: '/signup'
-      fullPath: '/signup'
-      preLoaderRoute: typeof SignupImport
-      parentRoute: typeof rootRoute
-    }
-    '/_authenticated/dashboard': {
-      id: '/_authenticated/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof AuthenticatedDashboardImport
-      parentRoute: typeof AuthenticatedImport
-    }
-    '/_authenticated/page-0': {
-      id: '/_authenticated/page-0'
+    '/page-0': {
+      id: '/page-0'
       path: '/page-0'
       fullPath: '/page-0'
-      preLoaderRoute: typeof AuthenticatedPage0Import
-      parentRoute: typeof AuthenticatedImport
+      preLoaderRoute: typeof Page0Import
+      parentRoute: typeof rootRoute
     }
-    '/_authenticated/page-1': {
-      id: '/_authenticated/page-1'
+    '/page-1': {
+      id: '/page-1'
       path: '/page-1'
       fullPath: '/page-1'
-      preLoaderRoute: typeof AuthenticatedPage1Import
-      parentRoute: typeof AuthenticatedImport
+      preLoaderRoute: typeof Page1Import
+      parentRoute: typeof rootRoute
     }
   }
 }
 
 // Create and export the route tree
 
-interface AuthenticatedRouteChildren {
-  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
-  AuthenticatedPage0Route: typeof AuthenticatedPage0Route
-  AuthenticatedPage1Route: typeof AuthenticatedPage1Route
-}
-
-const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
-  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
-  AuthenticatedPage0Route: AuthenticatedPage0Route,
-  AuthenticatedPage1Route: AuthenticatedPage1Route,
-}
-
-const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
-  AuthenticatedRouteChildren,
-)
-
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '': typeof AuthenticatedRouteWithChildren
-  '/signin': typeof SigninRoute
-  '/signup': typeof SignupRoute
-  '/dashboard': typeof AuthenticatedDashboardRoute
-  '/page-0': typeof AuthenticatedPage0Route
-  '/page-1': typeof AuthenticatedPage1Route
+  '/page-0': typeof Page0Route
+  '/page-1': typeof Page1Route
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '': typeof AuthenticatedRouteWithChildren
-  '/signin': typeof SigninRoute
-  '/signup': typeof SignupRoute
-  '/dashboard': typeof AuthenticatedDashboardRoute
-  '/page-0': typeof AuthenticatedPage0Route
-  '/page-1': typeof AuthenticatedPage1Route
+  '/page-0': typeof Page0Route
+  '/page-1': typeof Page1Route
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/_authenticated': typeof AuthenticatedRouteWithChildren
-  '/signin': typeof SigninRoute
-  '/signup': typeof SignupRoute
-  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
-  '/_authenticated/page-0': typeof AuthenticatedPage0Route
-  '/_authenticated/page-1': typeof AuthenticatedPage1Route
+  '/page-0': typeof Page0Route
+  '/page-1': typeof Page1Route
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | ''
-    | '/signin'
-    | '/signup'
-    | '/dashboard'
-    | '/page-0'
-    | '/page-1'
+  fullPaths: '/' | '/page-0' | '/page-1'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '' | '/signin' | '/signup' | '/dashboard' | '/page-0' | '/page-1'
-  id:
-    | '__root__'
-    | '/'
-    | '/_authenticated'
-    | '/signin'
-    | '/signup'
-    | '/_authenticated/dashboard'
-    | '/_authenticated/page-0'
-    | '/_authenticated/page-1'
+  to: '/' | '/page-0' | '/page-1'
+  id: '__root__' | '/' | '/page-0' | '/page-1'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
-  SigninRoute: typeof SigninRoute
-  SignupRoute: typeof SignupRoute
+  Page0Route: typeof Page0Route
+  Page1Route: typeof Page1Route
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AuthenticatedRoute: AuthenticatedRouteWithChildren,
-  SigninRoute: SigninRoute,
-  SignupRoute: SignupRoute,
+  Page0Route: Page0Route,
+  Page1Route: Page1Route,
 }
 
 export const routeTree = rootRoute
@@ -216,39 +116,18 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/_authenticated",
-        "/signin",
-        "/signup"
+        "/page-0",
+        "/page-1"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/_authenticated": {
-      "filePath": "_authenticated.tsx",
-      "children": [
-        "/_authenticated/dashboard",
-        "/_authenticated/page-0",
-        "/_authenticated/page-1"
-      ]
+    "/page-0": {
+      "filePath": "page-0.tsx"
     },
-    "/signin": {
-      "filePath": "signin.tsx"
-    },
-    "/signup": {
-      "filePath": "signup.tsx"
-    },
-    "/_authenticated/dashboard": {
-      "filePath": "_authenticated/dashboard.tsx",
-      "parent": "/_authenticated"
-    },
-    "/_authenticated/page-0": {
-      "filePath": "_authenticated/page-0.tsx",
-      "parent": "/_authenticated"
-    },
-    "/_authenticated/page-1": {
-      "filePath": "_authenticated/page-1.tsx",
-      "parent": "/_authenticated"
+    "/page-1": {
+      "filePath": "page-1.tsx"
     }
   }
 }

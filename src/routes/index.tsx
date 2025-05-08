@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import Header from "../components/Header";
 
 export const Route = createFileRoute("/")({
   component: App,
@@ -8,7 +7,6 @@ export const Route = createFileRoute("/")({
 function App() {
   return (
     <div>
-      <Header />
       <h1>Welcome</h1>
     </div>
   );

@@ -10,14 +10,15 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import SidebarFooter from "./SidebarFooter";
 import { Link } from "@tanstack/react-router";
+import { SidebarFooter } from "@/components/ui/sidebar";
+import { UserButton } from "@clerk/clerk-react";
 
 // Menu items.
 const items = [
   {
-    title: "Dashboard",
-    url: "/dashboard",
+    title: "Home",
+    url: "/",
     icon: Home,
   },
   {
@@ -54,7 +55,9 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter />
+      <SidebarFooter>
+        <UserButton />
+      </SidebarFooter>
     </Sidebar>
   );
 }

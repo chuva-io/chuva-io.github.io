@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { SignInButton, SignUpButton } from "@clerk/clerk-react";
 
 export default function Header() {
   return (
@@ -9,8 +10,8 @@ export default function Header() {
         </div>
       </nav>
       <div className="flex gap-4">
-        <Link to="/signin">Sign In</Link>
-        <Link to="/signup">Sign Up</Link>
+        <SignInButton />
+        <SignUpButton />
       </div>
     </header>
   );
