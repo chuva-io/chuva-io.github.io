@@ -2,8 +2,6 @@
 
 @plugin "tailwindcss-animate";
 
-@custom-variant dark (&:is(.dark *));
-
 body {
   @apply m-0;
   font-family:
