@@ -7,7 +7,7 @@ const chuva_grey3 = "52, 73, 94";
 const chuva_blue = "99, 182, 232";
 const chuva_green = "115, 216, 136";
 
-export default ({
+export default function BackgroundGradientAnimation({
   gradientBackgroundStart = `rgb(${chuva_black})`,
   gradientBackgroundEnd = `rgb(${chuva_black})`,
   firstColor = chuva_grey3,
@@ -37,7 +37,7 @@ export default ({
   className?: string;
   containerClassName?: string;
   allowScroll?: boolean;
-}) => {
+}) {
   useEffect(() => {
     document.body.style.setProperty(
       "--gradient-background-start",
@@ -156,4 +156,4 @@ export default ({
       </div>
     </div>
   );
-};
+}
