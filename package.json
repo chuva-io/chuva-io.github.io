@@ -8,6 +8,7 @@
     "packages/*"
   ],
   "scripts": {
+    "dev": "./tmux.sh",
     "build:types": "yarn workspace @chuva-template-monorepo/types build",
     "build:web": "yarn workspace @chuva-template-monorepo/web build",
     "build:less": "yarn workspace @chuva-template-monorepo/less build",
