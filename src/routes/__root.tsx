@@ -1,8 +1,9 @@
 import { Outlet, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
-import Dashboard from "../components/DashboardLayout";
 import Header from "../components/Header";
+import Dashboard from "@/components/DashboardLayout";
+import Home from "@/pages/Home";
 
 export const Route = createRootRoute({
   component: () => (
@@ -10,7 +11,7 @@ export const Route = createRootRoute({
       <div>
         <Header />
         <SignedOut>
-          <h1>Home Page</h1>
+          <Home />
         </SignedOut>
         <SignedIn>
           <Dashboard>
