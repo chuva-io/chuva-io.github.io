@@ -1,0 +1,22 @@
+{
+  "name": "@chuva-template-monorepo/less",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "build": "./scripts/build.sh",
+    "start": "less-cli run chuva-monorepo",
+    "dev": "yarn build && yarn start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@chuva-template-monorepo/types": "^0.0.1",
+    "@less-ifc/types": "^0.0.2"
+  },
+  "devDependencies": {
+    "@chuva.io/less-cli": "^1.0.0-beta.51",
+    "typescript": "^5.8.3"
+  }
+}
