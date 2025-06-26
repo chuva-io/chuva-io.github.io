@@ -74,7 +74,7 @@ export default () => {
         </li>
 
         {/* Deploy */}
-        <li className="flex flex-col gap-8">
+        <li className="flex flex-col items-center gap-8">
           <p>
             <GradientText text="Step 2:" /> Deploy with a single command
           </p>
@@ -82,11 +82,13 @@ export default () => {
         </li>
       </ol>
 
-      <GlowingButton
-        title={"Read the Docs"}
-        href={"https://docs.less.chuva.io"}
-        newTab
-      />
+      <div className="mx-auto w-md">
+        <GlowingButton
+          title={"Read the Docs"}
+          href={"https://docs.less.chuva.io"}
+          newTab
+        />
+      </div>
 
       {/* Additional features section */}
       <div className="flex flex-col gap-8">

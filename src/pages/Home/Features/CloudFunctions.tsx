@@ -32,14 +32,14 @@ exports.process = async (request, response) => {
 
 export default (): React.ReactNode => (
   <div className="flex flex-col items-center gap-8">
-    <p className="md:w-2/5">
+    <p className="max-w-xl">
       Use Less Cloud Functions to run workers, bridge between programming
       languages, incrementally migrate existing code to the cloud, expose helper
       functions via REST API or the Less SDK, and more. What use-cases can you
       come up with?
     </p>
 
-    <div className="w-full overflow-x-auto md:w-3/5">
+    <div className="w-full max-w-2xl overflow-x-auto md:w-4/5">
       <h4 className="mb-2 text-lg font-semibold">Create your Cloud Function</h4>
       <CodeBlock
         language="javascript"
@@ -48,7 +48,7 @@ export default (): React.ReactNode => (
       />
     </div>
 
-    <div className="w-full overflow-x-auto md:w-3/5">
+    <div className="w-full max-w-2xl overflow-x-auto md:w-4/5">
       <h4 className="mb-2 text-lg font-semibold">
         Calling your Cloud Function Using the SDK
       </h4>
@@ -62,7 +62,7 @@ export default (): React.ReactNode => (
     <div>
       <GlowingButton
         title={"Visit the Cloud Function Documentation"}
-        href={"https://less.chuva.io/cloud-functions"}
+        href={"https://docs.less.chuva.io/cloud-functions"}
         newTab
       />
     </div>

@@ -25,16 +25,17 @@ export CRON_GENERATE_DAILY_REPORT="0 0 * * ? *"`,
 
 export default (): React.ReactNode => (
   <div className="flex flex-col items-center gap-8">
-    <p className="md:w-2/5">Schedule jobs using standard CRON expressions.</p>
+    <p className="max-w-xl">Schedule jobs using standard CRON expressions.</p>
 
-    <CodeBlock
-      language="javascript"
-      filename={code.js.cronJob.filename}
-      code={code.js.cronJob.code}
-      className="max-w-full overflow-x-auto md:w-3/5"
-    />
+    <div className="w-full max-w-2xl overflow-x-auto md:w-4/5">
+      <CodeBlock
+        language="javascript"
+        filename={code.js.cronJob.filename}
+        code={code.js.cronJob.code}
+      />
+    </div>
 
-    <div className="max-w-full overflow-x-auto md:w-3/5">
+    <div className="w-full max-w-2xl overflow-x-auto md:w-4/5">
       <h4 className="mb-2 text-lg font-semibold">Schedule Configuration</h4>
       <div className="flex flex-col gap-4">
         <CodeBlock
@@ -49,7 +50,7 @@ export default (): React.ReactNode => (
     <div>
       <GlowingButton
         title={"Visit the CRON Job Documentation"}
-        href={"https://less.chuva.io/cron-jobs"}
+        href={"https://docs.less.chuva.io/cron-jobs"}
         newTab
       />
     </div>

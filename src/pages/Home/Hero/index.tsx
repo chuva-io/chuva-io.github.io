@@ -24,12 +24,12 @@ export default () => (
     <div className="flex flex-col w-full gap-2 sm:flex-row">
       <GlowingButton
         title={"Read the Docs"}
-        href={"https://less.chuva.io"}
+        href={"https://docs.less.chuva.io"}
         newTab
       />
       <GlowingButton
         title={"Get Started"}
-        href={"https://less.chuva.io/quick-start"}
+        href={"https://docs.less.chuva.io/quick-start"}
         newTab
       />
     </div>

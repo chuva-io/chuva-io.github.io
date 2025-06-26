@@ -9,5 +9,7 @@ const code = {
 };
 
 export default (): React.ReactNode => (
-  <CodeBlock language="bash" code={code.deploy.command.code} />
+  <div className="w-full max-w-2xl overflow-x-auto md:w-4/5">
+    <CodeBlock language="bash" code={code.deploy.command.code} />
+  </div>
 );

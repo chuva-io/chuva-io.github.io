@@ -28,7 +28,7 @@ const via = "via-chuva-green via-50%";
 const to = "to-chuva-blue to-70%";
 
 export default () => (
-  <ul className="flex flex-col items-center justify-center w-screen gap-4 py-4 text-lg text-white sm:px-4 text-nowrap sm:gap-8 sm:flex-row">
+  <ul className="flex flex-col items-center justify-center w-screen max-w-4xl gap-4 py-4 text-lg text-white sm:px-4 text-nowrap sm:gap-8 sm:flex-row">
     {links.map((link) => (
       <li
         key={link.href}

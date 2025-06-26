@@ -10,13 +10,16 @@ import Pricing from "./Pricing";
 import NavigationMenu from "@/components/NavigationMenu";
 import Footer from "@/components/Footer";
 
+const debugBorders =
+  "border-chuva-green sm:border-chuva-yellow md:border-chuva-orange lg:border-chuva-red";
+
 export default function Home() {
   return (
     <BackgroundGradientAnimation className="flex flex-col items-center justify-center text-center text-chuva-white">
-      <header>
+      <header className="absolute top-0">
         <NavigationMenu />
       </header>
-      <div className="flex flex-col items-center w-screen max-w-6xl gap-40 px-8 pb-40 overflow-hidden border-2 home-page border-chuva-green sm:border-chuva-yellow md:border-chuva-orange lg:border-chuva-red">
+      <div className="flex flex-col items-center w-screen max-w-6xl gap-40 px-8 pb-40 overflow-hidden pt-30 sm:pt-0 home-page">
         {/* Hero Section */}
         <div className="flex items-center justify-center min-h-screen hero">
           <Hero />
@@ -38,7 +41,7 @@ export default function Home() {
         </div>
 
         {/* Less is Magic Section */}
-        <div className="items-center justify-center hidden w-full sm:flex ">
+        <div className="items-center justify-center hidden w-full">
           <TextRevealCard
             text="LESS IS MAGIC"
             hiddenText="LESS IS MORE"

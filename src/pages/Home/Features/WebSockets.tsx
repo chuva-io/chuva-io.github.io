@@ -48,12 +48,12 @@ def process(connection_id):
 
 export default (): React.ReactNode => (
   <div className="flex flex-col items-center gap-8">
-    <p className="md:w-2/5">
+    <p className="max-w-xl">
       Real-time bidirectional communication with automatic scaling backed by{" "}
       <strong>AWS API Gateway</strong>.
     </p>
 
-    <div className="max-w-full overflow-x-auto md:w-3/5">
+    <div className="w-full max-w-2xl overflow-x-auto md:w-4/5">
       <h4 className="mb-2 text-lg font-semibold">Socket Connection Handler</h4>
       <CodeBlock
         language="javascript"
@@ -62,7 +62,7 @@ export default (): React.ReactNode => (
       />
     </div>
 
-    <div className="max-w-full overflow-x-auto md:w-3/5">
+    <div className="w-full max-w-2xl overflow-x-auto md:w-4/5">
       <h4 className="mb-2 text-lg font-semibold">
         Socket Channel Message Handler
       </h4>
@@ -76,7 +76,7 @@ export default (): React.ReactNode => (
     <div>
       <GlowingButton
         title={"Visit the WebSocket Documentation"}
-        href={"https://less.chuva.io/web-sockets"}
+        href={"https://docs.less.chuva.io/web-sockets"}
         newTab
       />
     </div>

@@ -9,7 +9,7 @@ export const Route = createRootRoute({
     <div>
       <div>
         {/* <SignedOut> */}
-        <Home />
+        <Outlet />
         {/* </SignedOut> */}
         {/* <SignedIn>
           <Dashboard>

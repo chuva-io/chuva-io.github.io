@@ -106,11 +106,7 @@ export default () => (
         <EmailIcon />
       </a>
     </div>
-    <a
-      target="_blank"
-      href="https://less.chuva.io/terms-and-conditions/"
-      className={linkClass}
-    >
+    <a target="_blank" href="/terms-and-conditions/" className={linkClass}>
       Terms and Conditions
     </a>
   </div>

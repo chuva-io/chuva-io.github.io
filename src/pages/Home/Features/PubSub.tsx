@@ -42,7 +42,7 @@ exports.process = async (request, response) => {
 
 export default (): React.ReactNode => (
   <div className="flex flex-col items-center gap-8">
-    <p className="md:w-2/5">
+    <p className="max-w-xl">
       Less gives you access to the fanout architecture using{" "}
       <strong>AWS SNS Topics → SQS Queues → Lambda functions</strong>. This
       provides at-least-once delivery guarantees with automatic retries.
@@ -50,7 +50,7 @@ export default (): React.ReactNode => (
       messages continue processing independently.
     </p>
 
-    <div className="max-w-full overflow-x-auto md:w-3/5">
+    <div className="w-full max-w-2xl overflow-x-auto md:w-4/5">
       <h4 className="mb-2 text-lg font-semibold">
         Publish a message to a topic
       </h4>
@@ -61,7 +61,7 @@ export default (): React.ReactNode => (
       />
     </div>
 
-    <div className="max-w-full overflow-x-auto md:w-3/5">
+    <div className="w-full max-w-2xl overflow-x-auto md:w-4/5">
       <h4 className="mb-2 text-lg font-semibold">Subscribe to a topic</h4>
       <CodeBlock
         language="javascript"
@@ -72,7 +72,7 @@ export default (): React.ReactNode => (
     <div>
       <GlowingButton
         title={"Visit the Pub/Sub Documentation"}
-        href={"https://less.chuva.io/topics_subscribers"}
+        href={"https://docs.less.chuva.io/topics_subscribers"}
         newTab
       />
     </div>

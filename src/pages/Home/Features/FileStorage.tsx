@@ -48,13 +48,13 @@ def process(file_path):
 };
 
 export default (): React.ReactNode => (
-  <div className="space-y-6">
-    <p>
+  <div className="flex flex-col items-center gap-8">
+    <p className="max-w-xl">
       File Storage is backed by <strong>Amazon S3</strong> and uses pre-signed
       URLs for secure file upload and download.
     </p>
 
-    <div>
+    <div className="w-full max-w-2xl overflow-x-auto md:w-4/5">
       <h4 className="mb-2 text-lg font-semibold">
         Create a pre-signed file upload URL
       </h4>
@@ -65,7 +65,7 @@ export default (): React.ReactNode => (
       />
     </div>
 
-    <div>
+    <div className="w-full max-w-2xl overflow-x-auto md:w-4/5">
       <h4 className="mb-2 text-lg font-semibold">
         Retrieve file download URLs
       </h4>
@@ -76,10 +76,12 @@ export default (): React.ReactNode => (
       />
     </div>
 
-    <GlowingButton
-      title={"Visit the File Storage Documentation"}
-      href={"https://less.chuva.io/file-storage"}
-      newTab
-    />
+    <div className="mx-auto w-md">
+      <GlowingButton
+        title={"Visit the File Storage Documentation"}
+        href={"https://docs.less.chuva.io/file-storage"}
+        newTab
+      />
+    </div>
   </div>
 );
