@@ -11,7 +11,7 @@ const TabsList = React.forwardRef<
   <TabsPrimitive.List
     ref={ref}
     className={cn(
-      "snap-x snap-proximity flex overflow-x-auto mx-auto",
+      "snap-x snap-proximity flex overflow-x-auto mx-auto max-w-max",
       className
     )}
     {...props}

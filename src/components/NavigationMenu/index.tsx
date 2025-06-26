@@ -8,12 +8,6 @@ type Link = {
 
 const links: Link[] = [
   { title: "Features", href: "/#features" },
-  { title: "Blog", href: "https://docs.less.chuva.io/blog", newTab: true },
-  {
-    title: "Tutorials",
-    href: "https://docs.less.chuva.io/tutorials/",
-    newTab: true,
-  },
   { title: "Documentation", href: "https://docs.less.chuva.io/", newTab: true },
   { title: "Pricing", href: "/#pricing" },
   {
