@@ -56,6 +56,7 @@ export default () => (
       </div>
     </div>
 
+    {/* Typing section */}
     <div className="w-full text-2xl font-light sm:text-4xl">
       There is no easier way to
       <br />
@@ -66,7 +67,7 @@ export default () => (
         words={[
           { text: "REST APIs", className: "text-chuva-blue" },
           { text: "WebSockets", className: "text-chuva-green" },
-          { text: "Topics / Subscribers", className: "text-chuva-orange" },
+          { text: "Pub/Sub", className: "text-chuva-orange" },
           { text: "AI Workflows", className: "text-chuva-blue" },
           { text: "Queues", className: "text-chuva-green" },
           { text: "CRON Jobs", className: "text-chuva-yellow" },

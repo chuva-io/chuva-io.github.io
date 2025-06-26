@@ -46,9 +46,9 @@ if (rootElement && !rootElement.innerHTML) {
     <StrictMode>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
-        <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
-          <RouterProvider router={router} />
-        </ClerkProvider>
+        {/* <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/"> */}
+        <RouterProvider router={router} />
+        {/* </ClerkProvider> */}
       </QueryClientProvider>
     </StrictMode>
   );

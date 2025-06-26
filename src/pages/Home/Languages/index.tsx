@@ -8,6 +8,9 @@ export default () => (
         <GradientText text="MULTI-LANGUAGE SUPPORT" />
       </h1>
 
+      <h2 className="pb-4">
+        Less currently supports Javascript, Typescript, and Python.
+      </h2>
       <h2>You can even use more than one language in the same project!</h2>
     </div>
 

@@ -1,19 +1,23 @@
 import CodeBlock from "@/components/CodeBlock";
+import GlowingButton from "@/components/GlowingButton";
 
 const code = {
   js: {
     function: {
       filename: "less/functions/sum/index.js",
-      code: `exports.process = ({ a, b }) => {
+      code: `// Cloud function to add 2 numbers
+exports.process = ({ a, b }) => {
   return a + b;
 };`,
     },
     caller: {
       filename: "less/apis/demo/calculate/get.js",
-      code: `const { functions } = require('@chuva.io/less');
+      code: `// Import functions to call cloud functions
+const { functions } = require('@chuva.io/less');
 
+// Add 2 numbers via GET request
 exports.process = async (request, response) => {
-  // Get the values to add from the query parameters
+  // Get the 2 values to add from the query parameters
   const { a, b } = request.query;
 
   // Call the cloud function
@@ -24,63 +28,43 @@ exports.process = async (request, response) => {
 };`,
     },
   },
-  py: {
-    function: {
-      filename: "less/functions/factorial/index.py",
-      code: `def process(n):
-    if n <= 1:
-        return 1
-    return n * process(n - 1)`,
-    },
-  },
 };
 
 export default (): React.ReactNode => (
-  <div className="pb-20">
-    <div>
-      <p>
-        Use Less Cloud Functions to bridge between programming languages, slowly
-        migrate your existing stacks to the cloud, expose your existing helper
-        functions via REST API and Less SDK, and more.
-      </p>
-      <ul className="my-4 space-y-2">
-        <li>
-          • <strong>Multi-language support</strong>: Bridge between JavaScript,
-          Python, and more
-        </li>
-        <li>
-          • <strong>API execution</strong>: Call functions via REST API from
-          anywhere
-        </li>
-        <li>
-          • <strong>Language interoperability</strong>: Share SDKs and libraries
-          across languages
-        </li>
-      </ul>
+  <div className="flex flex-col items-center gap-8">
+    <p className="md:w-2/5">
+      Use Less Cloud Functions to run workers, bridge between programming
+      languages, incrementally migrate existing code to the cloud, expose helper
+      functions via REST API or the Less SDK, and more. What use-cases can you
+      come up with?
+    </p>
+
+    <div className="w-full overflow-x-auto md:w-3/5">
+      <h4 className="mb-2 text-lg font-semibold">Create your Cloud Function</h4>
+      <CodeBlock
+        language="javascript"
+        filename={code.js.function.filename}
+        code={code.js.function.code}
+      />
     </div>
 
-    <div className="space-y-6">
-      <div>
-        <h4 className="mb-2 text-lg font-semibold">
-          Cloud function to add two numbers
-        </h4>
-        <CodeBlock
-          language="javascript"
-          filename={code.js.function.filename}
-          code={code.js.function.code}
-        />
-      </div>
+    <div className="w-full overflow-x-auto md:w-3/5">
+      <h4 className="mb-2 text-lg font-semibold">
+        Calling your Cloud Function Using the SDK
+      </h4>
+      <CodeBlock
+        language="javascript"
+        filename={code.js.caller.filename}
+        code={code.js.caller.code}
+      />
+    </div>
 
-      <div>
-        <h4 className="mb-2 text-lg font-semibold">
-          Calling Cloud Functions from the SDK
-        </h4>
-        <CodeBlock
-          language="javascript"
-          filename={code.js.caller.filename}
-          code={code.js.caller.code}
-        />
-      </div>
+    <div>
+      <GlowingButton
+        title={"Visit the Cloud Function Documentation"}
+        href={"https://less.chuva.io/cloud-functions"}
+        newTab
+      />
     </div>
   </div>
 );

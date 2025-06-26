@@ -1,4 +1,5 @@
 import CodeBlock from "@/components/CodeBlock";
+import GlowingButton from "@/components/GlowingButton";
 
 const code = {
   js: {
@@ -47,60 +48,38 @@ def process(file_path):
 };
 
 export default (): React.ReactNode => (
-  <div className="pb-20">
+  <div className="space-y-6">
+    <p>
+      File Storage is backed by <strong>Amazon S3</strong> and uses pre-signed
+      URLs for secure file upload and download.
+    </p>
+
     <div>
-      <p>
-        File Storage in Less is powered by <strong>Amazon S3</strong>, the
-        world's most durable and scalable object storage. Create pre-signed URLs
-        for secure file upload and download with automatic scaling, global CDN
-        distribution, and 99.999999999% (11 9's) durability.
-      </p>
-      <ul className="my-4 space-y-2">
-        <li>
-          • <strong>Pre-signed URLs</strong>: Secure, time-limited
-          upload/download without exposing credentials
-        </li>
-        <li>
-          • <strong>CloudFront CDN</strong>: Global content delivery with edge
-          caching
-        </li>
-        <li>
-          • <strong>Automatic scaling</strong>: Handle any file size and request
-          volume
-        </li>
-        <li>
-          • <strong>Public/private files</strong>: Flexible access control for
-          different use cases
-        </li>
-        <li>
-          • <strong>Server-side encryption</strong>: Files encrypted at rest by
-          default
-        </li>
-      </ul>
+      <h4 className="mb-2 text-lg font-semibold">
+        Create a pre-signed file upload URL
+      </h4>
+      <CodeBlock
+        language="javascript"
+        filename={code.js.upload.filename}
+        code={code.js.upload.code}
+      />
     </div>
 
-    <div className="space-y-6">
-      <div>
-        <h4 className="mb-2 text-lg font-semibold">
-          Create a pre-signed file upload URL
-        </h4>
-        <CodeBlock
-          language="javascript"
-          filename={code.js.upload.filename}
-          code={code.js.upload.code}
-        />
-      </div>
-
-      <div>
-        <h4 className="mb-2 text-lg font-semibold">
-          Retrieve file download URLs
-        </h4>
-        <CodeBlock
-          language="javascript"
-          filename={code.js.download.filename}
-          code={code.js.download.code}
-        />
-      </div>
+    <div>
+      <h4 className="mb-2 text-lg font-semibold">
+        Retrieve file download URLs
+      </h4>
+      <CodeBlock
+        language="javascript"
+        filename={code.js.download.filename}
+        code={code.js.download.code}
+      />
     </div>
+
+    <GlowingButton
+      title={"Visit the File Storage Documentation"}
+      href={"https://less.chuva.io/file-storage"}
+      newTab
+    />
   </div>
 );

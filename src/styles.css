@@ -174,10 +174,10 @@ code {
     @apply bg-background text-foreground;
   }
   .glass {
-    @apply px-8 py-6 rounded-lg shadow-xl bg-chuva-white/8 shadow-chuva-black/40;
+    @apply rounded-lg shadow-xl bg-chuva-white/8 shadow-chuva-black/40;
   }
   .glass:hover {
-    @apply transition-all shadow-md;
+    @apply transition-all ease-in-out shadow-md bg-chuva-white/7;
   }
   .home-page {
     .hero {

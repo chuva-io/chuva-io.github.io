@@ -4,12 +4,12 @@ import {
 } from "@/components/ui/glowing-effect";
 
 interface GridItemProps {
-  area: string;
+  area?: string;
   children: React.ReactNode;
 }
 
 interface GridItemProps extends GlowingEffectProps {
-  area: string;
+  area?: string;
   children: React.ReactNode;
 }
 
@@ -29,7 +29,7 @@ export default ({
 }: GridItemProps) => {
   return (
     <li className={`w-full list-none ${area}`}>
-      <div className="relative w-full h-full rounded-md shadow-lg bg-chuva-white/10">
+      <div className="relative w-full h-full glass">
         <GlowingEffect
           blur={blur}
           inactiveZone={inactiveZone}

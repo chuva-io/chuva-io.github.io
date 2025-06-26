@@ -53,12 +53,7 @@ const teamPlanFeatures: FeatureSection[] = [
   {
     title: "Additional Features",
     features: [
-      "Unlimited cloud environments",
-      "Unlimited concurrent builds",
-      "Local dev environment",
-      "Custom static website domains",
-      "Access to logs and metrics in managed AWS account",
-      "Community support on Discord",
+      "Everything in the Free plan",
       "14 days onboarding support",
       "CI keys (coming soon)",
     ],
@@ -80,14 +75,7 @@ const proPlanFeatures: FeatureSection[] = [
   {
     title: "Additional Features",
     features: [
-      "Unlimited cloud environments",
-      "Unlimited concurrent builds",
-      "Local dev environment",
-      "Custom static website domains",
-      "Access to logs and metrics in managed AWS account",
-      "Community support on Discord",
-      "14 days onboarding support",
-      "CI keys (coming soon)",
+      "Everything in the Team plan",
       "Deploy to your own AWS account (coming soon)",
     ],
   },
@@ -124,21 +112,19 @@ export default function Pricing() {
         <h1>
           <GradientText text="PRICING" />
         </h1>
-        <h2>
-          Less tries to make your experience as simple as possible.
-          <br />
-          Pricing is no different.
-        </h2>
+        <div className="flex flex-col gap-4">
+          <h2>
+            Less is all about making your experience as simple as possible.
+          </h2>
+          <h2>Pricing is no different.</h2>
+        </div>
       </div>
 
       {/* Plans Section */}
       <div className="grid gap-6 md:grid-cols-3">
         {plans.map((plan, index) => (
           // Card for each plan
-          <div
-            key={`plan-${index}`}
-            className="flex flex-col gap-8 glass glass:hover"
-          >
+          <div key={`plan-${index}`} className="flex flex-col gap-8 p-4 glass">
             {/* Header */}
             <div>
               <h1 className="text-2xl font-normal text-center">

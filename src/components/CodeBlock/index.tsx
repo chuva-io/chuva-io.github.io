@@ -4,7 +4,7 @@ import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { IconCheck, IconCopy } from "@tabler/icons-react";
 
 type CodeBlockProps = {
-  language: "javascript" | "typescript" | "python" | "bash";
+  language: "javascript" | "typescript" | "python" | "bash" | "yaml";
   filename?: string;
   highlightLines?: number[];
   code: string;

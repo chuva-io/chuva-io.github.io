@@ -1,6 +1,6 @@
 import RestApis from "./RestApis";
 import WebSockets from "./WebSockets";
-import TopicsSubscribers from "./TopicsSubscribers";
+import PubSub from "./PubSub";
 import CloudFunctions from "./CloudFunctions";
 import FileStorage from "./FileStorage";
 import KeyValueStore from "./KeyValueStore";
@@ -8,10 +8,9 @@ import CronJobs from "./CronJobs";
 import Deploy from "./Deploy";
 import Tabs from "@/components/TabBar";
 import GradientText from "@/components/GradientText";
-import { Button } from "@/components/ui/button";
-import GlowingGridItem from "@/components/GlowingGridItem";
+import GlowingButton from "@/components/GlowingButton";
 
-const data = [
+const functions = [
   {
     id: "REST APIs",
     title: "REST APIs",
@@ -23,15 +22,23 @@ const data = [
     content: <WebSockets />,
   },
   {
-    id: "Topics / Subscribers",
-    title: "Topics / Subscribers",
-    content: <TopicsSubscribers />,
+    id: "Pub/Sub",
+    title: "Pub/Sub",
+    content: <PubSub />,
+  },
+  {
+    id: "CRON Jobs",
+    title: "CRON Jobs",
+    content: <CronJobs />,
   },
   {
     id: "Cloud Functions",
     title: "Cloud Functions",
     content: <CloudFunctions />,
   },
+];
+
+const additionalFeatures = [
   {
     id: "File Storage",
     title: "File Storage",
@@ -42,21 +49,12 @@ const data = [
     title: "Key-Value Store",
     content: <KeyValueStore />,
   },
-  {
-    id: "CRON Jobs",
-    title: "CRON Jobs",
-    content: <CronJobs />,
-  },
-  {
-    id: "Deploy",
-    title: "Deploy",
-    content: <Deploy />,
-  },
 ];
 
 export default () => {
   return (
-    <div className="flex flex-col justify-center gap-16">
+    <div className="flex flex-col justify-center gap-60">
+      {/* Title section */}
       <div>
         <h1>
           <GradientText text="YOUR AWS SERVERLESS SUPER HERO" />
@@ -65,29 +63,39 @@ export default () => {
         <h2>No cloud experience necessary.</h2>
       </div>
 
-      <Tabs tabs={data} />
+      {/* Steps section */}
+      <ol className="flex flex-col gap-30">
+        {/* Code */}
+        <li className="flex flex-col gap-8">
+          <p>
+            <GradientText text="Step 1:" /> Write your Less function
+          </p>
+          <Tabs tabs={functions} />
+        </li>
 
-      <ul className="w-full max-w-xs mx-auto">
-        <GlowingGridItem
-          // area="[grid-area:1/1/1/1]"
-          blur={0.25}
-          inactiveZone={0.07}
-          proximity={80}
-          spread={120}
-          variant="default"
-          glow={true}
-          movementDuration={1}
-          borderWidth={1}
-          disabled={false}
-        >
-          <Button
-            variant="plain"
-            onClick={() => window.open("https://docs.less.chuva.io", "_blank")}
-          >
-            Read the Docs
-          </Button>
-        </GlowingGridItem>
-      </ul>
+        {/* Deploy */}
+        <li className="flex flex-col gap-8">
+          <p>
+            <GradientText text="Step 2:" /> Deploy with a single command
+          </p>
+          <Deploy />
+        </li>
+      </ol>
+
+      <GlowingButton
+        title={"Read the Docs"}
+        href={"https://docs.less.chuva.io"}
+        newTab
+      />
+
+      {/* Additional features section */}
+      <div className="flex flex-col gap-8">
+        <p>
+          All Less functions have access to the Key-Value Store and File Storage
+          and can publish messages to your Topics.
+        </p>
+        <Tabs tabs={additionalFeatures} />
+      </div>
     </div>
   );
 };

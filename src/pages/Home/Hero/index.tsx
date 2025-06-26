@@ -1,6 +1,5 @@
+import GlowingButton from "@/components/GlowingButton";
 import GradientText from "@/components/GradientText";
-import { Button } from "@/components/ui/button";
-import GlowingGridItem from "@/components/GlowingGridItem";
 
 export default () => (
   <div className="flex flex-col items-center justify-center gap-12 ">
@@ -23,45 +22,16 @@ export default () => (
 
     {/* Glowing buttons */}
     <div className="flex flex-col w-full gap-2 sm:flex-row">
-      <GlowingGridItem
-        // area="[grid-area:1/1/1/1]"
-        blur={0.25}
-        inactiveZone={0.07}
-        proximity={80}
-        spread={120}
-        variant="default"
-        glow={true}
-        className=""
-        movementDuration={1}
-        borderWidth={1}
-        disabled={false}
-      >
-        <Button
-          variant="plain"
-          size="lg"
-          className=""
-          onClick={() => window.open("https://docs.less.chuva.io", "_blank")}
-        >
-          Read the Docs
-        </Button>
-      </GlowingGridItem>
-      <GlowingGridItem
-        // area="[grid-area:1/1/1/1]"
-        blur={0.25}
-        inactiveZone={0.07}
-        proximity={80}
-        spread={120}
-        variant="default"
-        glow={true}
-        className=""
-        movementDuration={1}
-        borderWidth={1}
-        disabled={false}
-      >
-        <Button variant="plain" href={"/#getting-started"} size="lg">
-          Get Started
-        </Button>
-      </GlowingGridItem>
+      <GlowingButton
+        title={"Read the Docs"}
+        href={"https://less.chuva.io"}
+        newTab
+      />
+      <GlowingButton
+        title={"Get Started"}
+        href={"https://less.chuva.io/quick-start"}
+        newTab
+      />
     </div>
   </div>
 );
